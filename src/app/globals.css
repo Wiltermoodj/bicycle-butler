@@ -1,0 +1,232 @@
+/*
+ * Bicycle Butler public site — semantic theme tokens.
+ * All colors are CSS custom properties named with the --theme- prefix.
+ * Components MUST reference these variables only (via Tailwind utility classes
+ * that map to them, or directly as var()). No hard-coded hex values in TSX.
+ * 
+ * Theme switching: add data-theme="light" or data-theme="brand" to the <html> tag.
+ * Default (no data-theme, or data-theme="dark") keeps the current slate-950 + gold look.
+ */
+
+/* --theme-base: dark slate foundation (default) */
+:root {
+  --theme-base-100: #fafafa;
+  --theme-base-200: #f5f5f5;
+  --theme-base-300: #e7e5e4;
+  --theme-base-400: #d4d2d1;
+  --theme-base-500: #a5a2a2;
+  --theme-base-600: #71717a;
+  --theme-base-700: #52525b;
+  --theme-base-800: #3f3f46;
+  --theme-base-900: #27272a;
+  --theme-base-950: #18181b;
+
+  --theme-accent-100: #fffbeb;
+  --theme-accent-200: #fef3c7;
+  --theme-accent-300: #fde68a;
+  --theme-accent-400: #facc15;
+  --theme-accent-500: #eab308;
+  --theme-accent-600: #ca8a04;
+  --theme-accent-700: #a16207;
+  --theme-accent-800: #854d0e;
+  --theme-accent-900: #573b03;
+
+  --theme-ink-100: #0f172a;
+  --theme-ink-200: #1e293b;
+  --theme-ink-300: #334155;
+  --theme-ink-400: #475569;
+  --theme-ink-500: #64748b;
+  --theme-ink-600: #94a3b8;
+  --theme-ink-700: #cbd5e1;
+  --theme-ink-800: #e2e8f0;
+  --theme-ink-900: #f1f5f9;
+
+  --theme-radius-sm: 0.125rem;
+  --theme-radius-md: 0.5rem;
+  --theme-radius-lg: 0.75rem;
+  --theme-radius-full: 9999px;
+
+/* --theme-light: light variant (data-theme="light") */
+}
+
+/* --theme-light: on data-theme="light" */
+[data-theme="light"] {
+  --theme-base-100: #ffffff;
+  --theme-base-200: #f9fafb;
+  --theme-base-300: #f3f4f6;
+  --theme-base-400: #e5e7eb;
+  --theme-base-500: #9ca3af;
+  --theme-base-600: #6b7280;
+  --theme-base-700: #4b5563;
+  --theme-base-800: #374151;
+  --theme-base-900: #1e293b;
+  --theme-base-950: #0f172a;
+
+  --theme-accent-100: #fffbeb;
+  --theme-accent-200: #fef3c7;
+  --theme-accent-300: #fde68a;
+  --theme-accent-400: #facc15;
+  --theme-accent-500: #eab308;
+  --theme-accent-600: #ca8a04;
+  --theme-accent-700: #a16207;
+  --theme-accent-800: #854d0e;
+  --theme-accent-900: #573b03;
+
+  --theme-ink-100: #0f172a;
+  --theme-ink-200: #1e293b;
+  --theme-ink-300: #334155;
+  --theme-ink-400: #475569;
+  --theme-ink-500: #64748b;
+  --theme-ink-600: #94a3b8;
+  --theme-ink-700: #cbd5e1;
+  --theme-ink-800: #e2e8f0;
+  --theme-ink-900: #f8fafc;
+}
+
+/* --theme-brand: brand variant (data-theme="brand") – accent can be swapped 
+   independently of the base to support rebranding without touching TSX. */
+[data-theme="brand"] {
+  --theme-base-100: #fafafa;
+  --theme-base-200: #f5f5f5;
+  --theme-base-300: #e7e5e4;
+  --theme-base-400: #d4d2d1;
+  --theme-base-500: #a5a2a2;
+  --theme-base-600: #71717a;
+  --theme-base-700: #52525b;
+  --theme-base-800: #3f3f46;
+  --theme-base-900: #27272a;
+  --theme-base-950: #18181b;
+
+  --theme-accent-100: #fffbeb;
+  --theme-accent-200: #fef3c7;
+  --theme-accent-300: #fde68a;
+  --theme-accent-400: #facc15;
+  --theme-accent-500: #eab308;
+  --theme-accent-600: #ca8a04;
+  --theme-accent-700: #a16207;
+  --theme-accent-800: #854d0e;
+  --theme-accent-900: #573b03;
+
+  --theme-ink-100: #0f172a;
+  --theme-ink-200: #1e293b;
+  --theme-ink-300: #334155;
+  --theme-ink-400: #475569;
+  --theme-ink-500: #64748b;
+  --theme-ink-600: #94a3b8;
+  --theme-ink-700: #cbd5e1;
+  --theme-ink-800: #e2e8f0;
+  --theme-ink-900: #f1f5f9;
+}
+
+/* --root overlays – make the html element carry the theme so the whole page 
+   swaps in one class. Remove the data-theme attribute entirely to fall back 
+   to the :root (dark) palette, or set data-theme="light" / data-theme="brand". */
+
+/* HTML: <html data-theme="dark"> keeps the current look.
+   <html data-theme="light"> switches the light palette.
+   <html data-theme="brand"> same tokens but accent is yours to rebrand.
+   Omit data-theme entirely → defaults to dark slate. */
+
+/* Ensures html without data-theme falls back to dark */
+html:not([data-theme]) {
+  data-theme: dark; /* fall-back only; real switch is via data-theme attr */
+}
+
+/*---------------------------------------------------------------
+   Component styles – every color below references a --theme- variable
+   only. Never use a raw hex value in a TSX file; if you need a color,
+   define it in this CSS file and add a Tailwind utility or CSS rule.
+   ---------------------------------------------------------------*/
+
+/* Page background – pulls from the theme */
+body {
+  background-color: var(--theme-base-950);
+  color: var(--theme-ink-100);
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Selection colour – also theme-aware */
+::selection {
+  background-color: var(--theme-accent-500);
+  color: var(--theme-base-950);
+}
+
+/*---------------------------------------------------------------
+   Tailwind 4 utilities that map to the --theme- variables.
+   These classes are safe to use in JSX; they resolve to the CSS vars
+   above and will automatically switch when the data-theme attribute
+   changes.
+   ---------------------------------------------------------------*/
+
+/* Backgrounds */
+.bg-theme-base-950 { background-color: var(--theme-base-950); }
+.bg-theme-base-900 { background-color: var(--theme-base-900); }
+.bg-theme-base-800 { background-color: var(--theme-base-800); }
+.bg-theme-base-700 { background-color: var(--theme-base-700); }
+.bg-theme-base-100 { background-color: var(--theme-base-100); }
+
+.bg-theme-accent-500 { background-color: var(--theme-accent-500); }
+.bg-theme-accent-600 { background-color: var(--theme-accent-600); }
+.bg-theme-accent-700 { background-color: var(--theme-accent-700); }
+.bg-theme-accent-500:hover { background-color: var(--theme-accent-600); }
+
+/* Text */
+.text-theme-ink-100 { color: var(--theme-ink-100); }
+.text-theme-ink-200 { color: var(--theme-ink-200); }
+.text-theme-ink-300 { color: var(--theme-ink-300); }
+.text-theme-ink-400 { color: var(--theme-ink-400); }
+.text-theme-ink-500 { color: var(--theme-ink-500); }
+.text-theme-ink-600 { color: var(--theme-ink-600); }
+.text-theme-ink-700 { color: var(--theme-ink-700); }
+.text-theme-ink-800 { color: var(--theme-ink-800); }
+.text-theme-ink-900 { color: var(--theme-ink-900); }
+
+/* Borders */
+.border-theme-base-800 { border-color: var(--theme-base-800); }
+.border-theme-base-700 { border-color: var(--theme-base-700); }
+.border-theme-accent-500 { border-color: var(--theme-accent-500); }
+
+/* Shadows (use theme vars for consistency) */
+.shadow-theme-accent { box-shadow: 0 4px 12px var(--theme-accent-500)/20; }
+.shadow-theme-base { box-shadow: 0 4px 12px var(--theme-base-900)/20; }
+
+/* Radii */
+.rounded-theme-sm { border-radius: var(--theme-radius-sm); }
+.rounded-theme-md { border-radius: var(--theme-radius-md); }
+.rounded-theme-lg { border-radius: var(--theme-radius-lg); }
+.rounded-theme-full { border-radius: var(--theme-radius-full); }
+
+/*---------------------------------------------------------------
+   Utility: safelist the theme variable names so Tailwind doesn't 
+   purge them. These are the only --theme- names the project uses.
+   ---------------------------------------------------------------*/
+@layer utilities {
+  .bg-theme-base-950,
+  .bg-theme-base-900,
+  .bg-theme-base-800,
+  .bg-theme-base-100,
+  .bg-theme-accent-500,
+  .bg-theme-accent-600,
+  .bg-theme-accent-700,
+  .text-theme-ink-100,
+  .text-theme-ink-200,
+  .text-theme-ink-300,
+  .text-theme-ink-400,
+  .text-theme-ink-500,
+  .text-theme-ink-600,
+  .text-theme-ink-700,
+  .text-theme-ink-800,
+  .text-theme-ink-900,
+  .border-theme-base-800,
+  .border-theme-base-700,
+  .border-theme-accent-500,
+  .shadow-theme-accent,
+  .shadow-theme-base,
+  .rounded-theme-sm,
+  .rounded-theme-md,
+  .rounded-theme-lg,
+  .rounded-theme-full {
+    saf-list: include;
+  }
+}
