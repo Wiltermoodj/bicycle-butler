@@ -79,6 +79,46 @@ coded locally"
 form accepts submissions and logs them (exit 0), so local dev requires no
 credentials and sends no email.
 
+### 8. Ecosystem Modeling — Capability Matrix & Persona Projections
+Settled via `/abstract-grill`: Products are modeled via a declarative capability matrix
+(`src/data/ecosystem/`) that specifies operational domains (POS, Wholesale, Inventory,
+CRM) and shared sync primitives. An internal engine compiles dynamic "How it connects"
+narratives and projects merchant persona workflows (Solo Mechanic, Multi-Store Retailer,
+Brand Distributor) for both single-product deep dives and solution-level filtering.
+
+### 9. Privacy-Preserving Lead Pipeline & Deterministic Degradation
+Settled via `/abstract-grill`: Ingestion uses a stateless pipe-and-filter chain:
+honeypot trap + render-to-submit timing checks (no third-party tracking or captcha cookies).
+Submissions flow into a deterministic degradation machine: primary dispatch via Resend,
+safe console logging in dev/preview, and instant fallback to prefilled mailto links
+if transport fails so inquiries are never dropped.
+
+### 10. Semantic Token Registry & Composite Section Layouts
+Settled via `/abstract-grill`: Design tokens are consolidated into Tailwind v4's
+`@theme` block in `src/app/globals.css`, binding semantic tokens (`base-*`, `accent-*`,
+`ink-*`) directly to CSS custom properties. Presentational rhythm is standardized
+across all 13 product pages using reusable composite section blocks (`ProductHero`,
+`FeatureGrid`, `EcosystemPanel`, `CtaSection`).
+
+### 11. Hero Visual Staging & Immersive Media Architecture
+Settled via `/abstract-grill`: Hero sections use a declarative scene registry (`src/data/scenes/`)
+rendered through `<HeroStage>`, pairing atmospheric workshop imagery and radial dark-slate scrims
+with WCAG AAA contrast and floating live-sync telemetry chips.
+
+### 12. Progressive Disclosure & Sticky Station Walkthrough
+Settled via `/abstract-grill`: Landing page guides visitors from the high-impact hook
+into a split-screen sticky retail walkthrough (`<OperationalShowcase>`), tracking stations
+(Counter POS, Service Bench, Stockroom, E-Commerce) with an interactive quick-nav deck.
+
+### 13. Operational UI Simulation & Asset Pipeline
+Settled via `/abstract-grill`: Real-world bike shop atmospheric backdrops are layered
+with razor-sharp React DOM terminal cards (`<RegisterTerminalPreview>`, `<StockSyncBadge>`).
+Product icons from local asset repositories are sanitized into `/public/icons/` with zero internal references.
+
+## Architecture & Concept Documentation
+- Detailed Concept Plan: [`knowledge/planning/public-site-concept.md`](file:///Users/lappier/code/projects/bicycle-butler/knowledge/planning/public-site-concept.md)
+- Architecture Context Map: [`knowledge/architecture/context-map.md`](file:///Users/lappier/code/projects/bicycle-butler/knowledge/architecture/context-map.md)
+
 ## Local development
 ```bash
 npm install
@@ -90,3 +130,4 @@ npm run dev
 - `npm run build` — all 20 routes prerender (13 product pages SSG + demo etc.)
 - `npm run typecheck` — exit 0
 - No `omnibutler` references anywhere in the repo.
+
