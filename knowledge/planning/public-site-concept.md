@@ -12,9 +12,7 @@ tags:
 
 # Bicycle Butler Public Site — Architectural Concept Plan
 
-This document establishes the finalized architectural paradigms, invariant boundaries, and module contracts for the Bicycle Butler marketing website (`Wiltermoodj/bicycle-butler`), settled via the `/abstract-grill` architectural review.
-
----
+This document establishes the finalized architectural paradigms, invariant boundaries, and module contracts for the Bicycle Butler marketing website (`Wiltermoodj/bicycle-butler`), settled through the `/abstract-grill` architectural review.
 
 ## 1. Architectural Mission & Invariant Boundaries
 
@@ -24,8 +22,6 @@ The Bicycle Butler public site is a high-performance marketing portal for an int
 1. **Strict Internal Isolation**: The site never references internal tooling or parent monorepo naming (`omnibutler`). It speaks purely as "Bicycle Butler" with zero private package imports.
 2. **Absolute Data Minimization**: Zero cookies, zero third-party tracking pixels, zero persistent database dependencies for visitors. Lead capture is ephemeral and strictly in-flight.
 3. **Deep Modules with Narrow Interfaces**: Page templates and routing components remain lean presentation shells consuming wide, invariant-protecting capability modules.
-
----
 
 ## 2. Settled Architectural Decisions
 
@@ -60,10 +56,8 @@ The Bicycle Butler public site is a high-performance marketing portal for an int
   ```
 * **Encapsulated Mechanics**:
   - Hides graph traversal and cross-product compatibility logic.
-  - Automatically derives the "How it connects" connection strip based on shared operational data (e.g. inventory counts between Vise and Stow).
+  - Automatically derives the "How it connects" connection strip based on shared operational data (for example, inventory counts between Vise and Stow).
   - Pre-renders persona workflow packages for solo mechanics, multi-register shops, and brand distributors.
-
----
 
 ### Decision 2: Privacy-Preserving Lead Capture & Anti-Abuse Dispatch Pipeline
 * **Paradigm**: Hybrid Synthesis — Stateless Pipe-and-Filter Pipeline + Deterministic Degradation Machine.
@@ -86,8 +80,6 @@ The Bicycle Butler public site is a high-performance marketing portal for an int
 
   export async function submitDemoLead(formData: FormData): Promise<LeadSubmissionOutcome>;
   ```
-
----
 
 ### Decision 3: Semantic Design Token Engine & Visual Component Architecture
 * **Paradigm**: Hybrid Synthesis — Tailwind v4 `@theme` Registry + Reusable Composite Section Layouts.
@@ -117,8 +109,6 @@ The Bicycle Butler public site is a high-performance marketing portal for an int
   - `<EcosystemPanel companions={product.companionApps} />`: Standardizes interconnected ecosystem narrative and badges.
   - `<PersonaWorkflowSection workflows={product.personaWorkflows} />`: Presents retail operations in terms of shop owner personas.
   - `<CtaSection title={...} subtitle={...} />`: Unified conversion trigger linking to `/demo`.
-
----
 
 ### Decision 4: Hero Visual Staging & Immersive Media Architecture
 * **Paradigm**: Hybrid Synthesis — Declarative Scene Registry + Viewport Stage (`<HeroStage>`).
@@ -153,10 +143,8 @@ The Bicycle Butler public site is a high-performance marketing portal for an int
   ```
 * **Encapsulated Mechanics**:
   - Encapsulates Next.js responsive image loading, `priority`, and WebP picture delivery.
-  - Generates semantic radial gradient masks (`from-base-950 via-base-950/75 to-transparent`) ensuring 100% WCAG AAA text contrast across arbitrary backgrounds.
+  - Generates semantic radial gradient masks (`from-base-950 through-base-950/75 to-transparent`) making sure that 100% WCAG AAA text contrast across arbitrary backgrounds.
   - Renders floating glassmorphic live-sync status telemetry badge over the image.
-
----
 
 ### Decision 5: Progressive Disclosure & Navigation into Details
 * **Paradigm**: Hybrid Synthesis — Sticky Narrative Storyboard with Station Quick-Nav Deck.
@@ -189,8 +177,6 @@ The Bicycle Butler public site is a high-performance marketing portal for an int
   - Interactive top anchor rail that allows immediate direct switching to any station.
   - Automatic mobile collapse into elegant stacked cards without sticky traps or scroll lock.
 
----
-
 ### Decision 6: Operational UI Simulation & Asset Pipeline
 * **Paradigm**: Hybrid Synthesis — Atmospheric Environmental Backdrops with Live Glassmorphic UI Telemetry Overlays.
 * **Problem Solved**: Overcomes the generic feel of stock photography by layering warm, atmospheric physical retail backdrops (repair stands, parts shelves, POS counters) with razor-sharp, accessible React DOM UI cards displaying realistic bike shop data.
@@ -201,8 +187,6 @@ The Bicycle Butler public site is a high-performance marketing portal for an int
   - `<RegisterTerminalPreview>`: Real DOM simulation of a fast checkout counter with SKU line items and live inventory sync broadcast indicator.
   - `<StockSyncBadge>`: Live animated stock availability pill ("Stock synced across 3 registers & online store in 14ms").
   - `<ServiceWorkOrderPreview>`: Repair stand telemetry showing work orders and customer SMS notification readiness.
-
----
 
 ## 3. Implementation Roadmap
 
